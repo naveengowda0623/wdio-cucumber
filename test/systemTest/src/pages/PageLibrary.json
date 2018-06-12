@@ -1,0 +1,9 @@
+{
+  "locators": {
+    "search": {
+      "searchBox":"[name=\"q\"]",
+      "searchButton":"[name=\"btnK\"]",
+      "searchResult":"[class=\"hdtb-mitem hdtb-msel hdtb-imb\"]"
+    }
+  }
+}
