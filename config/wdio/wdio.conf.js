@@ -1,7 +1,18 @@
-const { baseUrl, maxInstance, dataSheet } = require('../environment-properties')
+const {
+    baseUrl,
+    maxInstance,
+    dataSheet,
+    tagExpression,
+    feature,
+    considerSitTest,
+    disableHeadlessRun,
+} = require('../environment-properties')
 
 const testSourePath = './test/systemTest/'
 const reportsPath = './reports/systemTest/'
+const chromeHeadlessArgs = {
+    args: ['--headless', '--disable-gpu', '--disable-extensions', '--disable-dev-shm-usage', '--no-sandbox','--window-size=1920,1080','--disable-web-security'],
+}
 
 exports.config = {
     //
@@ -15,9 +26,10 @@ exports.config = {
     // `wdio` will be called from there.
     //
     specs: [
-        `${testSourePath}src/features/google.feature`,
+        `${testSourePath}src/features/${feature}.feature`,
     ],
     // Patterns to exclude.
+    // exclude: considerSitTest ? [] : [
     exclude: [
         // 'path/to/excluded/files'
     ],
@@ -52,6 +64,7 @@ exports.config = {
         //maxInstances: 5,
         //
         browserName: 'chrome',
+        chromeOptions: disableHeadlessRun ? {} : chromeHeadlessArgs
     }/* ,
     {
         browserName: 'firefox',
@@ -136,7 +149,7 @@ exports.config = {
         junit: {
             outputDir: `${reportsPath}junit/`
         }
-      },
+    },
     //
     // If you are using Cucumber you need to specify the location of your step
     // definitions.
@@ -178,7 +191,7 @@ exports.config = {
         // <string> (expression) only execute the features or scenarios with
         // tags matching the expression, see
         // https://docs.cucumber.io/tag-expressions/
-        tagExpression: 'not @Deprecated and not @WIP and not @Duplicate and not @OOS',
+        tagExpression,
         // tagExpression: '@WIP',
         // <boolean> add cucumber tags to feature or scenario name
         tagsInTitle: false,
@@ -198,7 +211,7 @@ exports.config = {
     //
     // Gets executed once before all workers get launched.
     // onPrepare: function onPrepare(config, capabilities) {
-        
+
     // },
     //
     // Gets executed before test execution begins. At this point you can access
@@ -261,7 +274,7 @@ exports.config = {
     // global variables from the test.
     // after: function after(result, capabilities, specs) {
     //     const report = require('multiple-cucumber-html-reporter');
-        
+
     //     report.generate({
     //         jsonDir: './test/systemTest/src/reports/json/',
     //         reportPath: './test/systemTest/src/reports/html/',

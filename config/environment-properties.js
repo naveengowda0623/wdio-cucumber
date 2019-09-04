@@ -1,27 +1,38 @@
+const ip = require('ip')
 let config
 
-if (process.env.NODE_ENV === 'ci') {
+if (process.env.TEST_DOMAIN === 'ci') {
   config = {
-    baseUrl: 'http://{ciHost}:{ciWebPort}/anzidhub/',
-    seleniumServerAddress: 'http://{ciSeleniumGridHost}:{ciSeleniumServerPort}/wd/hub',
-    seleniumServerHost: '{ciSeleniumGridHost}',
-    seleniumServerPort: '{ciSeleniumServerPort}',
-    mountebankUrl:'http://{ciHost}:{ciMbPort}',
+    baseUrl: `http://${ip.address()}:4200`,
+    seleniumServerAddress: 'http://localhost:4444/wd/hub',
+    seleniumServerHost: 'localhost',
+    seleniumServerPort: '4444',
+    mountebankUrl:'http://localhost:2525',
+    tagExpression: '*',
     maxInstance: 5,
-    dataSheet: 'ST'
+    dataSheet: 'ST',
+    feature: '*'
   }
-} else if (process.env.NODE_ENV === 'ST2') {
+} else if (process.env.TEST_DOMAIN === 'sit') {
   config = {
     baseUrl: 'https://www.',
+    mountebankUrl: 'http://localhost:2525',
+    tagExpression: '*',
+    maxInstance: 5,
     dataSheet: 'ST',
-    maxInstance: 10
+    feature: '*',
+    considerSitTest: true,
+    disableHeadlessRun: true
   }
 } else {
   config = {
     baseUrl: 'http://www.',
     mountebankUrl: 'http://localhost:2525',
-    maxInstance: 10,
-    dataSheet: 'ST'
+    tagExpression: 'not @WIP',
+    maxInstance: 5,
+    dataSheet: 'ST',
+    feature: '*',
+    disableHeadlessRun: true
   }
 }
 

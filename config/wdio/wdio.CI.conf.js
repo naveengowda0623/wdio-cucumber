@@ -3,13 +3,6 @@ const baseConfig = require('./wdio.conf.js').config
 
 const config = Object.assign({}, baseConfig, {
   baseUrl,
-  capabilities: [{
-    browserName: 'chrome'
-  }
- // {
- //   browserName: 'firefox'
- // }
-  ],
   path: '/wd/hub',
   host: seleniumServerHost,
   port: seleniumServerPort,
