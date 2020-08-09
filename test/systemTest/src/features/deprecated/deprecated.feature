@@ -1,3 +1,4 @@
+@Deprecated
 Feature: google.Search a word in google and validate
 
 	Scenario: SC1-Search a word in google and validate
