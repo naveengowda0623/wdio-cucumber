@@ -7,19 +7,19 @@ var libraryRepoPage = require('../../pages/PageLibrary.json');
  * @param  {String}   elem       Element selector
  */
 module.exports = (isExisting, elem) => {
-    /**
-     * Falsecase assertion
-     * @type {Boolean}
-     */
+	/**
+	 * Falsecase assertion
+	 * @type {Boolean}
+	 */
 
-    var path = "libraryRepoPage.locators."+elem;
-    elem = eval(path);
+	var path = `libraryRepoPage.locators.${elem}`;
+	elem = eval(path);
 
-    let falseCase = true;
+	let falseCase = true;
 
-    if (isExisting === 'an') {
-        falseCase = false;
-    }
+	if (isExisting === 'an') {
+		falseCase = false;
+	}
 
-    checkIfElementExists(elem, falseCase);
+	checkIfElementExists(elem, falseCase);
 };

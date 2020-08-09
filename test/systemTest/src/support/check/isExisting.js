@@ -5,21 +5,20 @@ var libraryRepoPage = require('../../pages/PageLibrary.json');
  * @param  {String}   falseCase Whether to check if the element exists or not
  */
 module.exports = (selector, falseCase) => {
-    /**
-     * Elements found in the DOM
-     * @type {Object}
-     */
-    var path1 = "libraryRepoPage.locators."+selector;
-    selector = eval(path1);
+	/**
+	 * Elements found in the DOM
+	 * @type {Object}
+	 */
+	var path1 = `libraryRepoPage.locators.${selector}`;
+	selector = eval(path1);
 
+	const elements = browser.elements(selector).value;
 
-    const elements = browser.elements(selector).value;
-
-    if (falseCase) {
-        expect(elements).to.have
-            .lengthOf(0, `Expected element "${selector}" not to exist`);
-    } else {
-        expect(elements).to.have.length
-            .above(0, `Expected element "${selector}" to exist`);
-    }
+	if (falseCase) {
+		expect(elements).to.have
+			.lengthOf(0, `Expected element "${selector}" not to exist`);
+	} else {
+		expect(elements).to.have.length
+			.above(0, `Expected element "${selector}" to exist`);
+	}
 };

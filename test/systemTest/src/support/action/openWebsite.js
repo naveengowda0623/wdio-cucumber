@@ -5,14 +5,12 @@ import fetchData from '../action/fetchData';
  * @param  {String}   page The URL to navigate to
  */
 module.exports = (type, page) => {
-    /**
-     * The URL to navigate to
-     * @type {String}
-     */
+	/**
+	 * The URL to navigate to
+	 * @type {String}
+	 */
 
-    page = fetchData(page);
-    
-    const url = (type === 'url') ? page : browser.options.baseUrl + page;
-
-    browser.url(url);
+	page = fetchData(page);
+	const url = (type === 'url') ? page : browser.options.baseUrl + page;
+	browser.url(url);
 };

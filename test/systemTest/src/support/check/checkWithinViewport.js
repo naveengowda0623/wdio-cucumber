@@ -6,25 +6,25 @@ var libraryRepoPage = require('../../pages/PageLibrary.json');
  *                              within the current viewport or not
  */
 module.exports = (element, falseCase) => {
-    /**
-     * The state of visibility of the given element inside the viewport
-     * @type {Boolean}
-     */
-    var path = "libraryRepoPage.locators."+element;
-    element = eval(path);
-    const isVisible = browser.isVisibleWithinViewport(element);
+	/**
+	 * The state of visibility of the given element inside the viewport
+	 * @type {Boolean}
+	 */
+	var path = `libraryRepoPage.locators.${element}`;
+	element = eval(path);
+	const isVisible = browser.isVisibleWithinViewport(element);
 
-    if (falseCase) {
-        expect(isVisible).to.not
-            .equal(
-                true,
-                `Expected element "${element}" to be outside the viewport`
-            );
-    } else {
-        expect(isVisible).to
-            .equal(
-                true,
-                `Expected element "${element}" to be inside the viewport`
-            );
-    }
+	if (falseCase) {
+		expect(isVisible).to.not
+			.equal(
+				true,
+				`Expected element "${element}" to be outside the viewport`
+			);
+	} else {
+		expect(isVisible).to
+			.equal(
+				true,
+				`Expected element "${element}" to be inside the viewport`
+			);
+	}
 };

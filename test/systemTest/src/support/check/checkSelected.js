@@ -6,20 +6,20 @@ var libraryRepoPage = require('../../pages/PageLibrary.json');
  *                              not
  */
 module.exports = (element, falseCase) => {
-    /**
-     * The selected state
-     * @type {Boolean}
-     */
+	/**
+	 * The selected state
+	 * @type {Boolean}
+	 */
 
-    var path = "libraryRepoPage.locators."+element;
-    element = eval(path);
-    const isSelected = browser.isSelected(element);
+	var path = `libraryRepoPage.locators.${element}`;
+	element = eval(path);
+	const isSelected = browser.isSelected(element);
 
-    if (falseCase) {
-        expect(isSelected).to.not
-            .equal(true, `"${element}" should not be selected`);
-    } else {
-        expect(isSelected).to
-            .equal(true, `"${element}" should be selected`);
-    }
+	if (falseCase) {
+		expect(isSelected).to.not
+			.equal(true, `"${element}" should not be selected`);
+	} else {
+		expect(isSelected).to
+			.equal(true, `"${element}" should be selected`);
+	}
 };

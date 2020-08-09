@@ -10,23 +10,23 @@ var libraryRepoPage = require('../../pages/PageLibrary.json');
  */
 
 module.exports = (method, value, element) => {
-    /**
-     * The command to perform on the browser object (addValue or setValue)
-     * @type {String}
-     */
+	/**
+	 * The command to perform on the browser object (addValue or setValue)
+	 * @type {String}
+	 */
 
-    const command = (method === 'add') ? 'addValue' : 'setValue';
+	const command = (method === 'add') ? 'addValue' : 'setValue';
 
-    let checkValue = value;
+	let checkValue = value;
 
-    var path = "libraryRepoPage.locators."+element;
-    element = eval(path);
+	var path = `libraryRepoPage.locators.${element}`;
+	element = eval(path);
 
-    checkIfElementExists(element, false, 1);
+	checkIfElementExists(element, false, 1);
 
-    if (!value) {
-        checkValue = '';
-    }
+	if (!value) {
+		checkValue = '';
+	}
 
-    browser[command](element, checkValue);
+	browser[command](element, checkValue);
 };

@@ -7,40 +7,40 @@ var libraryRepoPage = require('../../pages/PageLibrary.json');
  *                              or not
  */
 module.exports = (element, falseCase) => {
-    /**
-     * The command to perform on the browser object
-     * @type {String}
-     */
+	/**
+	 * The command to perform on the browser object
+	 * @type {String}
+	 */
 
-    var path = "libraryRepoPage.locators."+element;
-    element = eval(path);
-    let command = 'getValue';
+	var path = `libraryRepoPage.locators.${element}`;
+	element = eval(path);
+	let command = 'getValue';
 
-    if (browser.getAttribute(element, 'value') === null) {
-        command = 'getText';
-    }
+	if (browser.getAttribute(element, 'value') === null) {
+		command = 'getText';
+	}
 
-    /**
-     * False case
-     * @type {Boolean}
-     */
-    let boolFalseCase;
+	/**
+	 * False case
+	 * @type {Boolean}
+	 */
+	let boolFalseCase;
 
-    /**
-     * The text of the element
-     * @type {String}
-     */
-    const text = browser[command](element);
+	/**
+	 * The text of the element
+	 * @type {String}
+	 */
+	const text = browser[command](element);
 
-    if (typeof falseCase === 'undefined') {
-        boolFalseCase = false;
-    } else {
-        boolFalseCase = !!falseCase;
-    }
+	if (typeof falseCase === 'undefined') {
+		boolFalseCase = false;
+	} else {
+		boolFalseCase = !!falseCase;
+	}
 
-    if (boolFalseCase) {
-        expect(text).to.equal('');
-    } else {
-        expect(text).to.not.equal('');
-    }
+	if (boolFalseCase) {
+		expect(text).to.equal('');
+	} else {
+		expect(text).to.not.equal('');
+	}
 };

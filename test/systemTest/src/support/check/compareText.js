@@ -7,33 +7,33 @@ var libraryRepoPage = require('../../pages/PageLibrary.json');
  * @param  {String}   element2  Element selector for the second element
  */
 module.exports = (element1, falseCase, element2) => {
-    /**
-     * The text of the first element
-     * @type {String}
-     */
-    var path1 = "libraryRepoPage.locators."+element1;
-    element1 = eval(path1);
+	/**
+	 * The text of the first element
+	 * @type {String}
+	 */
+	var path1 = `libraryRepoPage.locators.${element1}`;
+	element1 = eval(path1);
 
-    const text1 = browser.getText(element1);
+	const text1 = browser.getText(element1);
 
-    /**
-     * The text of the second element
-     * @type {String}
-     */
+	/**
+	 * The text of the second element
+	 * @type {String}
+	 */
 
-    var path2 = "libraryRepoPage.locators."+element2;
-    element2 = eval(path2);
-    const text2 = browser.getText(element2);
+	var path2 = `libraryRepoPage.locators.${element2}`;
+	element2 = eval(path2);
+	const text2 = browser.getText(element2);
 
-    if (falseCase) {
-        expect(text1).to.not.equal(
-            text2,
-            `Expected text not to be "${text1}"`
-        );
-    } else {
-        expect(text1).to.equal(
-            text2,
-            `Expected text to be "${text1}" but found "${text2}"`
-        );
-    }
+	if (falseCase) {
+		expect(text1).to.not.equal(
+			text2,
+			`Expected text not to be "${text1}"`
+		);
+	} else {
+		expect(text1).to.equal(
+			text2,
+			`Expected text to be "${text1}" but found "${text2}"`
+		);
+	}
 };

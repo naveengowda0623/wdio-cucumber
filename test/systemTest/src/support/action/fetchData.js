@@ -10,26 +10,25 @@ var libraryRepoPage = require('../../pages/PageLibrary.json');
  */
 
 module.exports = (storyName) => {
-    /**
-     * The command to perform on the browser object (addValue or setValue)
-     * @type {String}
-     */
-    
-    var testData = "";
-    var tempVal = storyName.split(".");
-    var storyId = tempVal[0];
-    var paramName = tempVal[2];
-    var scenarioId = tempVal[1]
-    var data = masterTestData;
-    
+	/**
+	 * The command to perform on the browser object (addValue or setValue)
+	 * @type {String}
+	 */
 
-    for (var i = data.length - 1; i >= 0; i--) {
-        if (data[i].StoryTitle == storyId && data[i].ScenarioId == scenarioId) {
-            var temp = "data["+i+"]."+paramName;
-            testData = eval(temp);
-        }
-    }
+	var testData = "";
+	var tempVal = storyName.split(".");
+	var storyId = tempVal[0];
+	var paramName = tempVal[2];
+	var scenarioId = tempVal[1]
+	var data = masterTestData;
 
-    return testData;
-    
+	for (var i = data.length - 1; i >= 0; i--) {
+		if (data[i].StoryTitle == storyId && data[i].ScenarioId == scenarioId) {
+			var temp = `data[${i}].${paramName}`;
+			testData = eval(temp);
+		}
+	}
+
+	return testData;
+
 };

@@ -6,24 +6,24 @@ import fetchData from '../action/fetchData';
  * @param  {Type}     expectedTitle The expected title
  */
 module.exports = (falseCase, expectedTitle) => {
-    /**
-     * The title of the current browser window
-     * @type {String}
-     */
-    expectedTitle = fetchData(expectedTitle);
-    const title = browser.getTitle();
+	/**
+	 * The title of the current browser window
+	 * @type {String}
+	 */
+	expectedTitle = fetchData(expectedTitle);
+	const title = browser.getTitle();
 
-    if (falseCase) {
-        expect(title).to.not
-            .equal(
-                expectedTitle,
-                `Expected title not to be "${expectedTitle}"`
-            );
-    } else {
-        expect(title).to
-            .equal(
-                expectedTitle,
-                `Expected title to be "${expectedTitle}" but found "${title}"`
-            );
-    }
+	if (falseCase) {
+		expect(title).to.not
+			.equal(
+				expectedTitle,
+				`Expected title not to be "${expectedTitle}"`
+			);
+	} else {
+		expect(title).to
+			.equal(
+				expectedTitle,
+				`Expected title to be "${expectedTitle}" but found "${title}"`
+			);
+	}
 };

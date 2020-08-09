@@ -7,20 +7,20 @@ var libraryRepoPage = require('../../pages/PageLibrary.json');
  *                              or not
  */
 module.exports = (selector, falseCase) => {
-    /**
-     * Value of the hasFocus function for the given element
-     * @type {Boolean}
-     */
+	/**
+	 * Value of the hasFocus function for the given element
+	 * @type {Boolean}
+	 */
 
-    var path = "libraryRepoPage.locators."+selector;
-    selector = eval(path);
-    const hasFocus = browser.hasFocus(selector);
+	var path = `libraryRepoPage.locators.${selector}`;
+	selector = eval(path);
+	const hasFocus = browser.hasFocus(selector);
 
-    if (falseCase) {
-        expect(hasFocus).to.not
-            .equal(true, 'Expected element to not be focused, but it is');
-    } else {
-        expect(hasFocus).to
-            .equal(true, 'Expected element to be focused, but it is not');
-    }
+	if (falseCase) {
+		expect(hasFocus).to.not
+			.equal(true, 'Expected element to not be focused, but it is');
+	} else {
+		expect(hasFocus).to
+			.equal(true, 'Expected element to be focused, but it is not');
+	}
 };

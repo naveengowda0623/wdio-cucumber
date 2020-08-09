@@ -8,14 +8,14 @@ var libraryRepoPage = require('../../pages/PageLibrary.json');
  * @todo  merge with waitfor
  */
 module.exports = (elem, falseCase) => {
-    /**
-     * Maximum number of milliseconds to wait for
-     * @type {Int}
-     */
-    var path = "libraryRepoPage.locators."+elem;
-    elem = eval(path);
-    const ms = 10000;
+	/**
+	 * Maximum number of milliseconds to wait for
+	 * @type {Int}
+	 */
+	var path = `libraryRepoPage.locators.${elem}`
+	elem = eval(path);
+	const ms = 10000;
 
-    browser.waitForVisible(elem, ms, !!falseCase);
+	browser.waitForVisible(elem, ms, !!falseCase);
 
 };

@@ -6,19 +6,19 @@ var libraryRepoPage = require('../../pages/PageLibrary.json');
  *                              or not
  */
 module.exports = (element, falseCase) => {
-    /**
-     * The enabled state of the given element
-     * @type {Boolean}
-     */
-    var path1 = "libraryRepoPage.locators."+element;
-    element = eval(path1);
-    const isEnabled = browser.isEnabled(element);
+	/**
+	 * The enabled state of the given element
+	 * @type {Boolean}
+	 */
+	var path = `libraryRepoPage.locators.${element}`;
+	element = eval(path);
+	const isEnabled = browser.isEnabled(element);
 
-    if (falseCase) {
-        expect(isEnabled).to.not
-            .equal(true, `Expected element "${element}" not to be enabled`);
-    } else {
-        expect(isEnabled).to
-            .equal(true, `Expected element "${element}" to be enabled`);
-    }
+	if (falseCase) {
+		expect(isEnabled).to.not
+			.equal(true, `Expected element "${element}" not to be enabled`);
+	} else {
+		expect(isEnabled).to
+			.equal(true, `Expected element "${element}" to be enabled`);
+	}
 };

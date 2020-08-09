@@ -2,16 +2,16 @@ import checkContainsAnyText from './checkContainsAnyText';
 var libraryRepoPage = require('../../pages/PageLibrary.json');
 
 module.exports = (element, falseCase) => {
-    let newFalseCase = true;
+	let newFalseCase = true;
 
-    if (typeof falseCase === 'function') {
-        newFalseCase = false;
-    } else if (falseCase === ' not') {
-        newFalseCase = false;
-    }
+	if (typeof falseCase === 'function') {
+		newFalseCase = false;
+	} else if (falseCase === ' not') {
+		newFalseCase = false;
+	}
 
-    var path = "libraryRepoPage.locators."+element;
-    element = eval(path);
+	var path = `libraryRepoPage.locators.${element}`;
+	element = eval(path);
 
-    checkContainsAnyText(element, newFalseCase);
+	checkContainsAnyText(element, newFalseCase);
 };

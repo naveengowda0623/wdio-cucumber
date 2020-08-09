@@ -8,22 +8,22 @@ var libraryRepoPage = require('../../pages/PageLibrary.json');
  * @param  {String}   element Element selector
  */
 module.exports = (action, type, element) => {
-    /**
-     * Element to perform the action on
-     * @type {String}
-     */
-    //const elem = (type === 'link') ? `=${element}` : element;
+	/**
+	 * Element to perform the action on
+	 * @type {String}
+	 */
+	//const elem = (type === 'link') ? `=${element}` : element;
 
 
-    var path = "libraryRepoPage.locators."+element;
-    element = eval(path);
-    /**
-     * The method to call on the browser object
-     * @type {String}
-     */
-    const method = (action === 'click') ? 'click' : 'doubleClick';
+	var path = `libraryRepoPage.locators.${element}`;
+	element = eval(path);
+	/**
+	 * The method to call on the browser object
+	 * @type {String}
+	 */
+	const method = (action === 'click') ? 'click' : 'doubleClick';
 
-    checkIfElementExists(element);
+	checkIfElementExists(element);
 
-    browser[method](element);
+	browser[method](element);
 };
