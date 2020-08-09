@@ -7,5 +7,5 @@ var libraryRepoPage = require('../../pages/PageLibrary.json');
 module.exports = (element) => {
 	var path = "libraryRepoPage.locators."+element;
 	element = eval(path);
-    browser.clearElement(element);
+	browser.clearElement(element);
 };
